@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-j5i=w7qxq^*lo6(topj2)xp+(w-8sl9zv-ufn_37v+395*pv0a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [ALLOWED_HOSTS = [
+    '.onrender.com',
+    'localhost',
+    '127.0.0.1'
+]]
 
 
 # Application definition
@@ -79,6 +83,8 @@ WSGI_APPLICATION = 'HotelBooking.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+import os
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -94,6 +100,7 @@ DATABASES = {
         }
     }
 }
+
 
 
 # Password validation
