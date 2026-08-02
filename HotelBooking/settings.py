@@ -84,6 +84,7 @@ WSGI_APPLICATION = 'HotelBooking.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 import os
+import os
 
 DATABASES = {
     'default': {
