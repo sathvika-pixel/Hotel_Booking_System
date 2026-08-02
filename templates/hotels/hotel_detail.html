@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ hotel.name }}</h1>
+
+<img src="{{ hotel.image.url }}" width="500">
+
+<p>{{ hotel.description }}</p>
+
+<p>City : {{ hotel.city }}</p>
+
+<p>Address : {{ hotel.address }}</p>
+
+<p>Price : ₹ {{ hotel.price_per_night }}</p>
+
+<p>Available Rooms :
+{{ hotel.available_rooms }}</p>
+
+<p>Rating :
+{{ hotel.rating }}</p>
+
+<a href="{% url 'book_room' hotel.id %}" class="btn">
+    Book Now
+</a>
+
+{% endblock %}

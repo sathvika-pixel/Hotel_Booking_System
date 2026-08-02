@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Available Hotels</h1>
+
+<div class="hotel-container">
+
+{% for hotel in hotels %}
+
+<div class="hotel-card">
+
+<img src="{{ hotel.image.url }}">
+
+<h2>{{ hotel.name }}</h2>
+
+<p>{{ hotel.city }}</p>
+
+<p>{{ hotel.hotel_type }}</p>
+
+<p>₹ {{ hotel.price_per_night }}</p>
+
+<a href="{% url 'hotel_detail' hotel.id %}">
+Book Now
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

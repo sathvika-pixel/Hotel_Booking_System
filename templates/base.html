@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Hotel Booking System</title>
+
+    {% load static %}
+
+    <link rel="stylesheet"
+          href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <h2>Hotel Booking</h2>
+    </div>
+
+    <nav>
+
+        <a href="{% url 'home' %}">Home</a>
+
+        <a href="{% url 'hotel_list' %}">
+            Hotels
+        </a>
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'my_bookings' %}">
+                My Bookings
+            </a>
+
+            <a href="{% url 'profile' %}">
+                Profile
+            </a>
+
+            <a href="{% url 'logout' %}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+            <a href="{% url 'register' %}">
+                Register
+            </a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+<div class="container">
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+<footer>
+
+    <p>
+        © 2026 Hotel Booking System
+    </p>
+
+</footer>
+
+<script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>

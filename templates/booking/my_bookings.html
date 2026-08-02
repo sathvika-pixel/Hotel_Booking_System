@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>My Bookings</h2>
+
+{% for booking in bookings %}
+
+<p>{{ booking.hotel.name }}</p>
+
+<p>{{ booking.check_in }}</p>
+
+<p>{{ booking.check_out }}</p>
+
+<p>{{ booking.guests }}</p>
+
+<p>{{ booking.total_price }}</p>
+
+<p>{{ booking.status }}</p>
+
+<hr>
+
+{% empty %}
+
+<h3>No bookings found.</h3>
+
+{% endfor %}
+
+{% endblock %}
