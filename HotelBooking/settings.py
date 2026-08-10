@@ -21,10 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j5i=w7qxq^*lo6(topj2)xp+(w-8sl9zv-ufn_37v+395*pv0a'
+# SECRET_KEY = 'django-insecure-j5i=w7qxq^*lo6(topj2)xp+(w-8sl9zv-ufn_37v+395*pv0a'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     '.onrender.com',
@@ -103,17 +105,28 @@ if os.environ.get("RENDER"):
         }
     }
 else:
-    # Local Development
+    else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'hotel_booking_db',          
-            'USER': 'root',              
-            'PASSWORD': 'sathvika@4260', 
-            'HOST': 'localhost',
-            'PORT': '3306',
+            'NAME': os.environ.get('MYSQL_DATABASE', 'hotel_booking_db'),
+            'USER': os.environ.get('MYSQL_USER', 'root'),
+            'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+            'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
+            'PORT': os.environ.get('MYSQL_PORT', '3306'),
         }
     }
+    # Local Development
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.mysql',
+    #         'NAME': 'hotel_booking_db',          
+    #         'USER': 'root',              
+    #         'PASSWORD': 'sathvika@4260', 
+    #         'HOST': 'localhost',
+    #         'PORT': '3306',
+    #     }
+    # }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -168,7 +181,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 LOGIN_URL='login'
 LOGIN_REDIRECT_URL='home'
