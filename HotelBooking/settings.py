@@ -88,32 +88,30 @@ WSGI_APPLICATION = 'HotelBooking.wsgi.application'
 import os
 
 if os.environ.get("RENDER"):
-    # Render (Production)
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('MYSQL_DATABASE'),
-            'USER': os.environ.get('MYSQL_USER'),
-            'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
-            'HOST': os.environ.get('MYSQL_HOST'),
-            'PORT': os.environ.get('MYSQL_PORT', '3306'),
-            'OPTIONS': {
-                'ssl': {
-                    'ssl_mode': 'REQUIRED'
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("MYSQL_DATABASE"),
+            "USER": os.environ.get("MYSQL_USER"),
+            "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
+            "HOST": os.environ.get("MYSQL_HOST"),
+            "PORT": os.environ.get("MYSQL_PORT", "3306"),
+            "OPTIONS": {
+                "ssl": {
+                    "ssl_mode": "REQUIRED"
                 }
             }
         }
     }
 else:
-    else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('MYSQL_DATABASE', 'hotel_booking_db'),
-            'USER': os.environ.get('MYSQL_USER', 'root'),
-            'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
-            'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
-            'PORT': os.environ.get('MYSQL_PORT', '3306'),
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": "hotel_booking_db",
+            "USER": "root",
+            "PASSWORD": os.environ.get("LOCAL_MYSQL_PASSWORD"),
+            "HOST": "localhost",
+            "PORT": "3306",
         }
     }
     # Local Development
